@@ -8,9 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/ajustes_icon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/chat.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/chat_icon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/c_c_logo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/database1.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/database1_log.ldf")]
 
 

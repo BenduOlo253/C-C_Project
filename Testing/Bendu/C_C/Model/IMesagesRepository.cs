@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace C_C.Model
 {
-    public interface IPerfilRepository
+    internal interface IMesagesRepository
     {
-        void AddPerfil(string Nikname);
-        void UpdatePerfil(string Nikname);
+        public abstract void AddMessage(int IdPerfilEmisor, int IdPerfilReceptor, string Mensaje);
+
     }
 }

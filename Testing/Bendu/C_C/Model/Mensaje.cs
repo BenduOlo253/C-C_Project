@@ -11,8 +11,6 @@ namespace C_C.Model
         public int IdMensaje {  get; set; }
         public  int IdChat { get; set; }
         public DateTime Fecha { get; set; }
-        public bool ConfirmacionLectura { get; set; }
-
-
+        public bool ConfirmacionLectura { get; set; 
     }
 }

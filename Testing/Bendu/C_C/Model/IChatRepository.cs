@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_C.Model
 {
-     public class PreferenciasCarrera
+    internal interface IChatRepository
     {
-        public int IdPreferencia { get; set; }
-        public int IdCarrera { get; set; }
     }
 }

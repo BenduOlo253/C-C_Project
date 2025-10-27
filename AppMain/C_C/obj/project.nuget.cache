@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PHe/TW4Pf+0=",
+  "dgSpecHash": "jlZYPT7AHi4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jmanu\\Desktop\\C_C_Final-main\\TestBendu\\AppMain\\C_C\\C_C.csproj",
+  "projectFilePath": "C:\\Users\\jmanu\\Documents\\net\\Proyectos\\C-C_Project\\AppMain\\C_C\\C_C.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jmanu\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\jmanu\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

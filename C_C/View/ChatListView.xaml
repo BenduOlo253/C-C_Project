@@ -1,0 +1,104 @@
+﻿<Window x:Class="C_C.View.ChatListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C_C.View"
+        mc:Ignorable="d"
+        Title="C&amp;C App - Mis Chats" Height="800" Width="450"
+        WindowStyle="SingleBorderWindow" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        
+        x:Name="ChatListWindow">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="FondoPrincipal" Color="#001f3f"/>
+        <SolidColorBrush x:Key="AcentoPrincipal" Color="#00bfff"/>
+        <SolidColorBrush x:Key="FondoClaro" Color="#F0F8FF"/>
+        <SolidColorBrush x:Key="TextoGris" Color="#555"/>
+
+        <Style x:Key="EstiloItemChat" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="10" Margin="5"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#E6F7FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource FondoClaro}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource FondoPrincipal}" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="&lt;" Foreground="{StaticResource AcentoPrincipal}" 
+                        FontSize="24" FontWeight="Bold" Background="Transparent" BorderThickness="0" 
+                        VerticalAlignment="Center"
+                        Command="{Binding VolverCommand}"
+                        CommandParameter="{Binding ElementName=ChatListWindow}"/>
+
+                <TextBlock Grid.Column="1" Text="Matches y Chats" Foreground="White" 
+                           FontSize="22" FontWeight="Bold" VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" Margin="-30,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+
+            <ItemsControl ItemsSource="{Binding ChatList}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource EstiloItemChat}"
+                                Command="{Binding DataContext.AbrirChatCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                CommandParameter="{Binding}">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Ellipse Grid.Column="0" Width="60" Height="60" VerticalAlignment="Center">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding FotoUrl}" Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <StackPanel Grid.Column="1" Margin="15,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="18"/>
+                                    <TextBlock Text="{Binding UltimoMensaje}" Foreground="{StaticResource TextoGris}" FontSize="14" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,201 @@
+﻿<Window x:Class="C_C.View.RegisterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C_C.View"
+        
+        mc:Ignorable="d"
+        Title="C&amp;C App - Registro" Height="800" Width="450"
+        WindowStyle = "SingleBorderWindow" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="False"
+        x:Name="RegisterWindow">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="FondoPrincipal" Color="#001f3f"/>
+        <SolidColorBrush x:Key="AcentoPrincipal" Color="#00bfff"/>
+        <SolidColorBrush x:Key="TextoPrincipal" Color="White"/>
+        <SolidColorBrush x:Key="FondoContenedor" Color="#EAEAEA"/>
+
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource AcentoPrincipal}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter>
+                            <ContentPresenter.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextDecorations" Value="None"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter>
+                                    <ContentPresenter.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextDecorations" Value="Underline"/>
+                                        </Style>
+                                    </ContentPresenter.Resources>
+                                </ContentPresenter>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="BotonPrincipal" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AcentoPrincipal}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextoPrincipal}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource FondoPrincipal}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel VerticalAlignment="Top" Margin="30,30,30,30">
+
+                <Image Source="pack://application:,,,/Resources/Images/C_C_LOGO.png"
+                       Height="120"
+                       Margin="0,0,0,0"/>
+                <Image Source="pack://application:,,,/Resources/Images/Clase_Cita.png"
+                       Height="30"
+                       Margin="0,-5,0,25"/>
+
+                <TextBlock Text="Registro nuevo usuario"
+                           Foreground="{StaticResource AcentoPrincipal}"
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Margin="0,0,0,15"/>
+
+                <Border Background="{StaticResource FondoContenedor}" CornerRadius="20" Padding="25">
+                    <StackPanel>
+                        <TextBlock Text="Carrera/Unidad:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <ComboBox Margin="0,0,0,10" MinHeight="40"
+                                  SelectedItem="{Binding AlumnoNuevo.Carrera, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBoxItem Content="Ingeniería de Software"/>
+                            <ComboBoxItem Content="Ingeniería en Computación"/>
+                            <ComboBoxItem Content="Medicina"/>
+                            <ComboBoxItem Content="Derecho"/>
+                            <ComboBoxItem Content="Psicología"/>
+                            <ComboBoxItem Content="Nutrición"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Matrícula:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <TextBox Margin="0,0,0,10" MinHeight="40"
+                                 Text="{Binding AlumnoNuevo.Matricula, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Nombre completo:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <TextBox Margin="0,0,0,10" MinHeight="40"
+                                 Text="{Binding AlumnoNuevo.Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Género:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <ComboBox Margin="0,0,0,10" MinHeight="40"
+                                  SelectedValuePath="Tag"
+                                  SelectedValue="{Binding AlumnoNuevo.Genero, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBoxItem Content="Femenino" Tag="F"/>
+                            <ComboBoxItem Content="Masculino" Tag="M"/>
+                            <ComboBoxItem Content="Otro" Tag="O"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Fecha de nacimiento:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <DatePicker Margin="0,0,0,10" MinHeight="40"
+                                    SelectedDate="{Binding FechaNacimiento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Correo Electrónico:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+                        <TextBox Margin="0,0,0,10" MinHeight="40"
+                                 Text="{Binding AlumnoNuevo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Contraseña:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+
+                        <PasswordBox Margin="0,0,0,10" MinHeight="40"
+                                     x:Name="BoxContrasena1"
+                                     PasswordChanged="BoxContrasena1_PasswordChanged"/>
+
+                        <TextBlock Text="Confirmar Contraseña:" Margin="0,0,0,5" Foreground="DarkSlateGray"/>
+
+                        <PasswordBox Margin="0,0,0,0" MinHeight="40"
+                                     x:Name="BoxContrasena2"
+                                     PasswordChanged="BoxContrasena2_PasswordChanged"/>
+                    </StackPanel>
+                </Border>
+
+                <Button Content="REGISTRARSE"
+                        Style="{StaticResource BotonPrincipal}"
+                        Margin="0,20,0,0"
+                        Command="{Binding RegistrarseCommand}"
+                        CommandParameter="{Binding ElementName=RegisterWindow}"/>
+
+                <Button Style="{StaticResource LinkButton}"
+                        HorizontalAlignment="Center"
+                        Margin="0,15,0,0"
+                        Command="{Binding VolverCommand}"
+                        CommandParameter="{Binding ElementName=RegisterWindow}">
+                    <TextBlock>¿Ya tienes cuenta? Inicia sesión</TextBlock>
+                </Button>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

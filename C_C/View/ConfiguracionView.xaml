@@ -1,0 +1,15 @@
+﻿<Window x:Class="C_C.View.ConfiguracionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C_C.View"
+        mc:Ignorable="d"
+        Title="Configuración" Height="800" Width="450"
+        WindowStyle="SingleBorderWindow" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Text="VENTANA DE CONFIGURACIÓN" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="BotonVolver" Content="Volver a Home" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Click="BotonVolver_Click"/>
+    </Grid>
+</Window>
